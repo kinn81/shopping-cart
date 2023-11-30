@@ -1,0 +1,21 @@
+#NavigationBar {
+  border: 1px solid blue;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#leftLinks,
+#rightLinks {
+  display: flex;
+  gap: 20px;
+}
+
+#leftLinks {
+  padding-left: 20px;
+}
+
+#rightLinks {
+  padding-right: 20px;
+}

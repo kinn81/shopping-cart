@@ -1,0 +1,12 @@
+#root {
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#main-canvas {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  height: 100%;
+}
