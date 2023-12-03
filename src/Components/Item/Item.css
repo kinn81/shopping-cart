@@ -5,15 +5,30 @@
 }
 
 #item {
-  border: 0.5px solid black;
+  border: 2px solid black;
+  padding: 3px;
   border-radius: 10px;
   display: flex;
-  width: 200px;
-  height: 100px;
+  width: 250px;
 }
 
 #item > div {
   flex: 1;
+}
+
+#item-image {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#item-image > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 #item-detail {
@@ -21,7 +36,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 5px;
-  border-left: 0.5px solid darkgray;
+  border-left: 2px solid black;
 }
 
 #item-description {
