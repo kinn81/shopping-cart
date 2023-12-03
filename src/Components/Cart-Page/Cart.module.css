@@ -1,0 +1,15 @@
+#Cart {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  align-items: center;
+  overflow: auto;
+  gap: 5px;
+}
+
+#item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}

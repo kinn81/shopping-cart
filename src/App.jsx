@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div id="main-canvas">
-      <NavigationBar />
+      <NavigationBar cartArray={cartArray} setCartArray={setCartArray} />
       <Outlet context={[cartArray, setCartArray]} />
     </div>
   );

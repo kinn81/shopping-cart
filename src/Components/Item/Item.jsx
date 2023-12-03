@@ -1,44 +1,33 @@
 import "./Item.css";
 import { useState, useEffect } from "react";
 
-function Item({ itemObj, cartArray, setCartArray }) {
-  const [count, setCount] = useState(0);
-  const [image, setImage] = useState(null);
+function Item({ itemObj, cartArray, setCartArray, initialQty = 0 }) {
+  const [count, setCount] = useState(initialQty);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = itemObj.image;
-    img.onload = () => {
-      setImage(img);
-    };
-  });
-
-  const downCount = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
+  const updateCartQty = (qty) => {
+    //RETURN if user reduces qty below zero
+    if (qty < 0) {
+      return;
     }
-  };
 
-  const upCount = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const getCountInCart = () => {
-    const itemInCart = cartArray.find((item) => item.id === itemObj.id);
-    return itemInCart ? itemInCart.count : 0;
-  };
-
-  const addItemToCart = () => {
     // Find the item in the cart
     let existingItemIndex = cartArray.findIndex(
       (item) => item.id === itemObj.id
     );
 
+    //Delete the item from the cart array if the qty becomes zero
+    if (qty === 0 && existingItemIndex >= 0) {
+      setCount(qty);
+      setCartArray(cartArray.filter((_, index) => index !== existingItemIndex));
+      return;
+    }
+
+    //Item is in the cart, user changed qty != 0
     if (existingItemIndex >= 0) {
       // Item exists, update it
       const updatedCart = cartArray.map((item, index) => {
         if (index === existingItemIndex) {
-          return { ...item, count: item.count + count };
+          return { ...item, count: qty };
         }
         return item;
       });
@@ -47,11 +36,11 @@ function Item({ itemObj, cartArray, setCartArray }) {
       // Item doesn't exist, add it
       const newItem = {
         ...itemObj,
-        count: count,
+        count: qty,
       };
       setCartArray([...cartArray, newItem]);
     }
-    setCount(0);
+    setCount(qty);
   };
 
   return (
@@ -62,15 +51,12 @@ function Item({ itemObj, cartArray, setCartArray }) {
       <div id="item-detail">
         <div id="item-description">{itemObj.title}</div>
         <div id="increment-decrement">
+          <div>Add to Cart</div>
           <div id="counters">
-            <button onClick={downCount}>-</button>
+            <button onClick={() => updateCartQty(count - 1)}>-</button>
             <div>{count}</div>
-            <button onClick={upCount}>+</button>
+            <button onClick={() => updateCartQty(count + 1)}>+</button>
           </div>
-          <button id="add-to-cart" onClick={addItemToCart}>
-            Add to cart
-          </button>
-          <div id="in-cart">In cart: {getCountInCart()}</div>
         </div>
       </div>
     </div>

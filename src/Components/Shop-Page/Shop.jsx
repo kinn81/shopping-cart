@@ -10,7 +10,9 @@ function Shop() {
   const [cartArray, setCartArray] = useOutletContext();
 
   useEffect(() => {
-    if (items) return;
+    if (items) {
+      return;
+    }
     fetch("https://fakestoreapi.com/products")
       .then((response) => {
         if (!response.ok) {
@@ -20,7 +22,6 @@ function Shop() {
       })
       .then((response) => {
         setItems(response);
-        console.log(response);
       })
       .catch((error) => setError(error))
       .finally(() => {
@@ -36,6 +37,13 @@ function Shop() {
     return <div>Error: {error.message}</div>;
   }
 
+  const itemCartQty = (i) => {
+    let existingItemIndex = cartArray.findIndex((item) => item.id === i.id);
+    if (existingItemIndex >= 0) {
+      return cartArray[existingItemIndex].count;
+    }
+  };
+
   return (
     <div id="Shop">
       <p>Lets shop!</p>
@@ -49,6 +57,7 @@ function Shop() {
               imageUrl={item.image}
               cartArray={cartArray}
               setCartArray={setCartArray}
+              initialQty={itemCartQty(item) ? itemCartQty(item) : item.count}
             />
           ))}
       </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./NavigationBar.css";
 
-function NavigationBar() {
+function NavigationBar({ cartArray, setCartArray }) {
   return (
     <div id="NavigationBar">
       <div id="leftLinks">
@@ -9,7 +9,7 @@ function NavigationBar() {
         <Link to="/shop">Shop</Link>
       </div>
       <div id="rightLinks">
-        <Link to="/cart">Cart</Link>
+        <Link to="/cart">Cart ({cartArray.length})</Link>
       </div>
     </div>
   );
