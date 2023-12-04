@@ -1,4 +1,4 @@
-import "./Shop.css";
+import styles from "./Shop.module.css";
 import Item from "../Item/Item";
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
@@ -30,7 +30,7 @@ function Shop() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className={styles["Shop"]}>Loading...</div>;
   }
 
   if (error) {
@@ -45,9 +45,9 @@ function Shop() {
   };
 
   return (
-    <div id="Shop">
+    <div className={styles["Shop"]}>
       <p>Lets shop!</p>
-      <div id="item-container">
+      <div id={styles["item-container"]}>
         {items &&
           items.map((item) => (
             <Item

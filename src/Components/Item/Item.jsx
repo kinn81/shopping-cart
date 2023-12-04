@@ -51,7 +51,7 @@ function Item({ itemObj, cartArray, setCartArray, initialQty = 0 }) {
       <div id="item-detail">
         <div id="item-description">{itemObj.title}</div>
         <div id="increment-decrement">
-          <div>Add to Cart</div>
+          <div>Quantity in cart</div>
           <div id="counters">
             <button onClick={() => updateCartQty(count - 1)}>-</button>
             <div>{count}</div>

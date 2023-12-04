@@ -1,10 +1,13 @@
 #Cart {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+
   align-items: center;
   overflow: auto;
   gap: 5px;
+  border-width: 0 2px 2px 2px;
+  border-style: solid;
+  border-color: darkblue;
 }
 
 #item-container {
@@ -12,4 +15,5 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
+  margin-bottom: 20px;
 }

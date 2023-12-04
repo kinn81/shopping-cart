@@ -1,14 +1,18 @@
-#Shop {
+.Shop {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 100vh;
   align-items: center;
   overflow: auto;
   gap: 5px;
+  border-width: 0 2px 2px 2px;
+  border-style: solid;
+  border-color: darkblue;
 }
 
 #item-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+  margin-bottom: 20px;
 }

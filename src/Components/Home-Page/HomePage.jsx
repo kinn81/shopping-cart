@@ -1,8 +1,8 @@
-import "./HomePage.css";
+import styles from "./HomePage.module.css";
 
 function HomePage() {
   return (
-    <div id="HomePage">
+    <div id={styles["HomePage"]}>
       <p>This is the home page</p>
     </div>
   );

@@ -7,6 +7,4 @@
 #main-canvas {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
-  height: 100%;
 }

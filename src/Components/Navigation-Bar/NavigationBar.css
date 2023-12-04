@@ -1,5 +1,5 @@
 #NavigationBar {
-  border: 1px solid blue;
+  border: 2px solid darkblue;
   display: flex;
   height: 50px;
   justify-content: space-between;
